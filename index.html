@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Harmony Booth</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🎤 Harmony Booth</h1>
+    <p class="sub">Sing it. Stack it. Share it.</p>
+  </header>
+
+  <main>
+    <section id="record-card" class="card">
+      <button id="rec-btn" class="rec-btn" aria-label="Record">
+        <span id="rec-dot"></span>
+        <span id="rec-label">Tap to record</span>
+      </button>
+      <div id="rec-timer">00:00</div>
+      <p id="rec-hint" class="hint">Sing a phrase — a few seconds is plenty. We'll build two harmony voices on top of it.</p>
+    </section>
+
+    <section id="build-card" class="card" hidden>
+      <div id="build-status">
+        <div class="spinner"></div>
+        <span id="build-label">Building harmonies…</span>
+      </div>
+    </section>
+
+    <section id="mix-card" class="card" hidden>
+      <div class="transport">
+        <button id="play-btn" class="icon-btn" aria-label="Play">▶</button>
+        <button id="pause-btn" class="icon-btn" aria-label="Pause" hidden>⏸</button>
+        <button id="stop-btn" class="icon-btn" aria-label="Stop">⏹</button>
+        <label class="loop-toggle">
+          <input type="checkbox" id="loop-check" checked>
+          <span>Loop</span>
+        </label>
+        <div id="progress-wrap"><div id="progress-bar"></div></div>
+      </div>
+
+      <div id="voices"></div>
+
+      <div class="actions">
+        <button id="rerecord-btn" class="ghost-btn">🔁 Record again</button>
+        <button id="share-btn" class="primary-btn">📤 Export &amp; Share</button>
+      </div>
+      <p id="share-status" class="hint"></p>
+    </section>
+    <section id="diag-card" class="card diag-card">
+      <button id="diag-toggle" class="ghost-btn diag-toggle">🩺 Diagnostics</button>
+      <div id="diag-body" hidden>
+        <div id="diag-prev-wrap" hidden>
+          <p class="hint">Log from a session that didn't finish cleanly last time (this is the key clue if the app crashed/reloaded):</p>
+          <pre id="diag-prev"></pre>
+        </div>
+        <p class="hint">Current session log:</p>
+        <pre id="diag-log"></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Harmonies are fixed intervals (major 3rd + perfect 5th above your lead) — not key-aware, just a fun quick stack.</p>
+  </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.9.17/Tone.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
